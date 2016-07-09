@@ -20,6 +20,7 @@
     "cheerio": "^0.20.0",
     "htmlparser2": "^3.9.1",
     "path-resolve": "0.0.1",
-    "request": "^2.73.0"
+    "request": "^2.73.0",
+    "trumpet": "^1.7.2"
   }
 }

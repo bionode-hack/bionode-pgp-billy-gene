@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 const request = require( 'request' )
 const url = 'https://my.pgp-hms.org/public_genetic_data'
@@ -21,3 +22,9 @@ function scrape( res ) {
   $ = cheerio.load( res )
   console.log( $('[data-summarize-as="participant"]').text() )
 }
+=======
+console.log('billy gene!');
+var $ = require("cheerio");
+var request = require("request");
+console.log($);
+>>>>>>> 5867c9c32e17845993dbb3b2a78209d3ba89adcf

@@ -6,9 +6,9 @@ var request = require('request');
 var htmlparser = require("htmlparser2");
 
 
-var baseUrl = 'https://my.pgp-hms.org/public_genetic_data'
+var baseUrl = 'https://my.pgp-hms.org'
 
-var requestStream = request(`${baseUrl}?utf8=%E2%9C%93&data_type=biometric+data+-+CSV+or+similar&commit=Search'`);
+var requestStream = request(`${baseUrl}/public_genetic_data?utf8=%E2%9C%93&data_type=biometric+data+-+CSV+or+similar&commit=Search'`);
 
 
 var t = trumpet({objectMode:true});
@@ -34,7 +34,6 @@ requestStream
       this.push(parseTableRow(str));
       str = '';
       finished = false;
-
     }
     callback()
 }))
@@ -52,7 +51,8 @@ function parseTableRow(str) {
   var name = $('td[data-summarize-as="name"]').text();
 
   var participant = $( '[data-summarize-as="participant"] a' ).text().split( ', ' )
-  var rawData = $('td[data-summarize-as="size"]');
+  var download = $('td[data-summarize-as="size"] a').attr( 'href' );
+
 
   var resObj = {
     id: counter,
@@ -61,7 +61,8 @@ function parseTableRow(str) {
     dataType: dataType,
     date: date.trim(),
     participant : participant,
-    url: baseUrl + '/profile/' + participant[0]
+    url: baseUrl + '/profile/' + participant[0],
+    download: baseUrl + download
   }
 
   return JSON.stringify(resObj) + '\n';

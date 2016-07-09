@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/bionode-hack/bionode-pgp-billy-gene#readme",
   "dependencies": {
-    "casperjs": "^1.1.2"
+    "cheerio": "^0.20.0",
+    "request": "^2.73.0"
   }
 }

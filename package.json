@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/bionode-hack/bionode-pgp-billy-gene/issues"
   },
-  "homepage": "https://github.com/bionode-hack/bionode-pgp-billy-gene#readme"
+  "homepage": "https://github.com/bionode-hack/bionode-pgp-billy-gene#readme",
+  "dependencies": {
+    "casperjs": "^1.1.2"
+  }
 }

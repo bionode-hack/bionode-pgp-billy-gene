@@ -1,6 +1,6 @@
 //
 // const request = require( 'request' )
-// const url = 'https://my.pgp-hms.org/public_genetic_data'
+const url = 'https://my.pgp-hms.org/public_genetic_data'
 //
 const cheerio = require('cheerio')
 //
@@ -15,6 +15,7 @@ const cheerio = require('cheerio')
 
 const fs = require( 'fs' )
 const path = require( 'path-resolve' )
+
 fs.readFile( './page-source.html', 'utf-8', function(err, data) {
   err && console.log(err)
   data && scrape( data )
@@ -22,5 +23,9 @@ fs.readFile( './page-source.html', 'utf-8', function(err, data) {
 
 function scrape( res ) {
   $ = cheerio.load( res )
-  console.log( $('td[data-summarize-as="participant"]') )
+  const anchors = $('td[data-summarize-as="participant"] a')
+  anchors.map(( i, anchor ) => {
+    console.log( url + anchor.attribs.href + '\n' )
+    console.log( anchor.children[0].data + '\n')
+  })
 }

@@ -12,48 +12,41 @@ var requestStream = request(urlString);
 var t = trumpet({objectMode:true});
 
 t.selectAll('tr', function (tableRow) {
-    // var trumpet2 = trumpet();
-    // trumpet2.selectAll('td', function (cell) {
-    //   console.log('CELL', cell);
-    // });
-
-    var str = '';
-    var finished = false;
-
-    console.log(arguments);
 
     tableRow.createReadStream()
-      .pipe(process.stdout)
-      .pipe(
-        through2.obj(
-        function (chunk, enc, cb) {
-          // console.log('-----------------');
-          // console.log(chunk);
-          // this.push("{asdfasdf:'asdf'}")
-
-          str += chunk.toString();
-          cb()
-          if (finished) {
-            this.push(str);
-            console.log('-------------');
-            console.log(str);
-          }
-        }
-      ))
-      .on('end', function () {
-        // this.push(str);
-        finished = true;
+      .on('data', function (data) {
+        str = str + data;
       })
-      .pipe(process.stdout);
+      .on('end', function () {
+        finished = true;
+      });
 });
+
+var str = '';
+var finished = false;
 
 requestStream
 .pipe(t)
-.pipe(through2.obj(
-  function (chunk, enc, cb) {
-    // console.log(chunk)
-    cb();
-  })
-);
+.pipe(through2.obj(function (chunk, enc, callback) {
+    if (finished) {
+      this.push(parseTableRow(str));
+      str = '';
+
+      finished = false;
+      console.log('-----------');
+    }
+
+    callback()
+}))
+.pipe(process.stdout)
 
 
+var counter = 0;
+
+function parseTableRow(str) {
+  counter = counter + 1;
+  return JSON.stringify({
+    id: counter,
+    name: 'name'
+  });
+}

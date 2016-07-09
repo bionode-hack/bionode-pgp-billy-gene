@@ -10,10 +10,15 @@
     "type": "git",
     "url": "git+https://github.com/bionode-hack/bionode-pgp-billy-gene.git"
   },
-  "author": "",
+  "author": "James Brown <npm@mesbrown.co.uk>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/bionode-hack/bionode-pgp-billy-gene/issues"
   },
-  "homepage": "https://github.com/bionode-hack/bionode-pgp-billy-gene#readme"
+  "homepage": "https://github.com/bionode-hack/bionode-pgp-billy-gene#readme",
+  "dependencies": {
+    "cheerio-cli": "^0.1.0",
+    "request": "^2.73.0"
+  },
+  "devDependencies": {}
 }

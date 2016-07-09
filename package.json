@@ -18,8 +18,6 @@
   "homepage": "https://github.com/bionode-hack/bionode-pgp-billy-gene#readme",
   "dependencies": {
     "cheerio": "^0.20.0",
-    "htmlparser2": "^3.9.1",
-    "path-resolve": "0.0.1",
     "request": "^2.73.0",
     "through2": "^2.0.1",
     "trumpet": "^1.7.2"

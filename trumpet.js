@@ -34,11 +34,11 @@ requestStream
       this.push(parseTableRow(str));
       str = '';
       finished = false;
+
     }
     callback()
 }))
 .pipe(process.stdout)
-
 
 var counter = 0;
 
@@ -64,5 +64,5 @@ function parseTableRow(str) {
     url: baseUrl + '/profile/' + participant[0]
   }
 
-  return JSON.stringify(resObj);
+  return JSON.stringify(resObj) + '\n';
 }

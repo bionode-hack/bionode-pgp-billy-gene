@@ -42,14 +42,12 @@ function scrape( res ) {
 function parseIndexData( data ){
   $ = cheerio.load( data);
 
-
-
   const date = $('td[data-summarize-as="list-distinct"]').eq(0).text();
   const dataType = $('td[data-summarize-as="list-distinct"]').eq(1).text();
   const fileSource = $('td[data-summarize-as="file-source"]').text();
   const name = $('td[data-summarize-as="name"]').text();
 
-  const participant = $('td[data-summarize-as="participant"] a');
+  const participant = $( '[data-summarize-as="participant"] a' ).text()
   const rawData = $('td[data-summarize-as="size"]');
 
   var resObj = {
@@ -57,19 +55,11 @@ function parseIndexData( data ){
   "fileSource" : fileSource,
   "dataType": dataType,
   "date": date.trim(),
-  "participant" : partData(participant) // still hanging
-  };
-
-  
-  function partData( selector ){
-    return {
-      "name": selector.children[0],
-      "profileUrl": selector.attribs.href
-    };
+  "participant" : participant.split( ', ' ) // still hanging
   }
-  console.log("result object: " + JSON.stringify(resObj));
+
+  // console.log("result object: " + JSON.stringify(resObj));
   return resObj;
 }
 
 console.log(parseIndexData(mockData));
-

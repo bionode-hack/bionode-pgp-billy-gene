@@ -1,5 +1,7 @@
 # bionode-pgp
 
+[![Join the chat at https://gitter.im/bionode-hack/bionode-pgp-billy-gene](https://badges.gitter.im/bionode-hack/bionode-pgp-billy-gene.svg)](https://gitter.im/bionode-hack/bionode-pgp-billy-gene?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Personal Genome Project
 -----------------------
 

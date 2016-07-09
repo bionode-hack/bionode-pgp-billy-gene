@@ -35,3 +35,5 @@ Description: (see above) It would be good to summarise some of the Participant i
 Technology: Not directly specified
 
 Assay type: Not directly specified. Might be inferred from 'Data type' value, e.g. 23andMe -> SNP array
+
+Open Data also available on openSNP

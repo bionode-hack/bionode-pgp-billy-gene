@@ -47,15 +47,16 @@ function parseIndexData( data ){
   const fileSource = $('td[data-summarize-as="file-source"]').text();
   const name = $('td[data-summarize-as="name"]').text();
 
-  const participant = $( '[data-summarize-as="participant"] a' ).text()
+  const participant = $( '[data-summarize-as="participant"] a' ).text().split( ', ' )
   const rawData = $('td[data-summarize-as="size"]');
 
   var resObj = {
-  "name": name,
-  "fileSource" : fileSource,
-  "dataType": dataType,
-  "date": date.trim(),
-  "participant" : participant.split( ', ' ) // still hanging
+  name: name,
+  fileSource : fileSource,
+  dataType: dataType,
+  date: date.trim(),
+  participant : participant,
+  url: url + '/profile/' + participant[0]
   }
 
   // console.log("result object: " + JSON.stringify(resObj));

@@ -1,17 +1,12 @@
 var trumpet = require('trumpet');
 var through2 = require('through2');
 var cheerio = require('cheerio');
-
 var request = require('request');
-var htmlparser = require("htmlparser2");
-
 
 var baseUrl = 'https://my.pgp-hms.org'
-
 var requestStream = request(`${baseUrl}/public_genetic_data?utf8=%E2%9C%93&data_type=biometric+data+-+CSV+or+similar&commit=Search'`);
 
-
-var t = trumpet({objectMode:true});
+var t = trumpet();
 
 t.selectAll('tr', function (tableRow) {
 
